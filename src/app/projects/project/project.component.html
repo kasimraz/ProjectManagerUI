@@ -8,7 +8,7 @@
           <label for="Project">Project:</label>
       </div>    
       <div class="col-md-3">
-          <input type="text" #ProjectName="ngModel" [(ngModel)]="projectService.selectedproject.Project"
+          <input type="text" #ProjectName="ngModel" [(ngModel)]="projectService.selectedproject.ProjectName"
            id="projectName" name="ProjectName"  class="form-control"/>        
       </div>        
   </div>
@@ -21,14 +21,14 @@
       </div>
       <div class="col-md-10">
         <div class="col-md-4">
-        <input type="checkbox">
+        <input type="checkbox" id="chkDate" (change)="toggleEditable($event)">
         <label >Set Start Date and End Date</label>        
       </div>
       <div class="col-md-6">
-        <input type="Date" name="StartDate" #StartDate="ngModel" [(ngModel)]="projectService.selectedproject.Start_Date"             
-        class="form-control spacer textWidth" style="display:inline-block" placeholder="Start Date" />
-        <input type="Date" name="EndDate" #EndDate="ngModel" [(ngModel)]="projectService.selectedproject.End_Date"             
-        class="form-control spacer textWidth" style="display:inline-block" placeholder="Start Date" />
+        <input type="Date" id="startDateTxtBox" name="StartDate" #StartDate="ngModel" [(ngModel)]="projectService.selectedproject.StartDate"             
+        class="form-control spacer textWidth" style="display:inline-block" placeholder="Start Date" disabled/>
+        <input type="Date" id="endDateTxtBox" name="EndDate" #EndDate="ngModel" [(ngModel)]="projectService.selectedproject.EndDate"             
+        class="form-control spacer textWidth" style="display:inline-block" placeholder="Start Date" disabled/>
        
         
       </div>
@@ -49,7 +49,7 @@
           <label for="Project">Manager</label>
       </div>    
       <div class="col-md-3">
-          <input type="text" name="Manager" #Manager="ngModel"  [(ngModel)]="projectService.selectedproject.User_Name"
+          <input type="text" name="Manager" #Manager="ngModel"  [(ngModel)]="projectService.selectedproject.ManagerName"
             class="form-control"/>        
       </div>
       <div class="col-md-2">
@@ -66,17 +66,16 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">UsersList</h4>
           </div>
-          <div class="modal-body">
-            <div>{{projectService.selectedproject.Project}}</div>
-              <table class="table">
-                  <td>Yesy a</td>
-                  <td>
-                    <button class="btn" >Select User</button>
+          <div class="modal-body">            
+              <table class="table" *ngFor="let user of projectService.users">
+                  <td class="col-md-4">{{user.FirstName+' '+user.LastName}}</td>
+                  <td class="col-md-4">
+                    <button class="btn" (click)="selectUserToManager(user)" >Select User</button>
                   </td>
                   </table>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="closeButton" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
         

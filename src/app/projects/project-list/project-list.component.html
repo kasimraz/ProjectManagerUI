@@ -18,18 +18,18 @@
 
 <ul class="list-group">
 <li class="list-group-item list-group-item"
- *ngFor="let project of projectService.projectlist ">
- <input type="hidden" name="Project_ID" #Task_ID="ngModel" 
-    [(ngModel)]="task.Task_ID">
+ *ngFor="let project of projectService.projectlist">
+ <input type="hidden" name="Project_ID" #Project_ID="ngModel" 
+    [(ngModel)]="project.Project_ID">
    <div class="row">
      <div class="col-md-8">
        <div class="tile">
         <div class="row">
           <div class="col-md-4">Project</div>
-          <div class="col-md-4">{{Project}}</div>
+          <div class="col-md-4">{{project.ProjectName}}</div>
         </div>
         <div class="row">
-            <div class="col-md-2">No Of Tasks</div>
+            <div class="col-md-6">No Of Tasks</div>
             <div class="col-md-2"></div>
 
             <div class="col-md-2">Completed</div>
@@ -37,10 +37,10 @@
           </div>
           <div class="row">
               <div class="col-md-2">Start Date</div>
-              <div class="col-md-2"></div>
+              <div class="col-md-2">{{project.StartDate}}</div>
   
               <div class="col-md-2">End Date</div>
-              <div class="col-md-2"></div>
+              <div class="col-md-2">{{project.EndDate}}</div>
             </div>          
        </div>
      </div>
