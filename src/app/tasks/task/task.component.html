@@ -1,0 +1,87 @@
+
+<br>
+<form #taskForm="ngForm" (ngSubmit)="onSubmit(taskForm)">
+        <input type="hidden" name="Task_ID" #User_ID="ngModel" 
+        [(ngModel)]="taskService.selectedTask.Task_ID">
+<div class="container">
+  <div class="row">
+      <div class="col-md-2">
+          <label for="Project">Project:</label>
+      </div>    
+      <div class="col-md-3">
+          <input type="text" [(ngModel)]="taskService.selectedTask.Project"
+           id="projectName"  class="form-control"/>        
+      </div>
+      <div class="col-md-2">
+       <button value="Search" class="btn btn-primary btn-round-sm btn-sm">Search</button>
+      </div>    
+  </div>
+  <br>
+  <div class="row">
+      <div class="col-md-2">
+          <label for="Project">Task:</label>
+      </div>
+      <div>
+      </div>
+      <div class="col-md-6">
+          <input type="text" [(ngModel)]="taskService.selectedTask.Task"
+           id="task"  class="form-control"/>        
+      </div>
+  </div>
+  <br>
+  <div class="row">
+      <div class="col-md-2">         
+      </div>
+      <div class="col-md-6">
+      <input type="checkbox" 
+       value="ParentTask"  > Parent Task <br>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+      <div class="col-md-2">
+          <label for="Priority">Priority</label>
+      </div>
+      <div class="col-md-6">
+            <input type="range" [(ngModel)]="taskService.selectedTask.Priority"
+             class="form-control-range" value="0" id="formControlRange">
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-2">
+          <label for="Project">Parent Task:</label>
+      </div>    
+      <div class="col-md-3">
+          <input type="text" [(ngModel)]="taskService.selectedTask.Priority"
+           id="PTaskName" class="form-control"/>        
+      </div>
+      <div class="col-md-2">
+       <button value="Search" class="btn btn-primary btn-round-sm btn-sm">Search</button>
+      </div>    
+  </div><br>
+  <div class="row">
+      <div class="col-md-2">
+            <label for="StartDate">Start Date:</label>
+      </div>
+      <div class="col-md-3">
+            <input type="Date" [(ngModel)]="taskService.selectedTask.Start_Date"
+             
+              class="form-control">
+      </div>
+      <div class="col-md-2">
+            <label for="EndDate">End Date:</label>
+      </div>
+      <div class="col-md-3">
+            <input type="Date"  [(ngModel)]="taskService.selectedTask.End_Date"
+            class="form-control">
+      </div>
+  </div>
+  <br>
+  <div class="row" style="text-align: center;padding:5px;">
+    <!-- [disabled]="!userForm.isvalid" -->
+    <button  id="btnSubmit" type="submit" (click)="onSubmit" class="btn btn-primary">Add Task</button>
+    <button type="input" class="btn btn-primary" (click)="resetForm(taskForm)"
+     style="margin-left:20px;">Reset</button>
+  </div>
+</div>
+</form>

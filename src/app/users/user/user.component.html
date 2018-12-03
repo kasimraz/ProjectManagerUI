@@ -1,0 +1,44 @@
+<form class="user-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <input type="hidden" name="User_ID" #User_ID="ngModel" 
+    [(ngModel)]="userService.selectedUser.User_ID">
+    <div class="panel-heading">
+        <h3>Enter User Details</h3>
+      </div>
+      <div class="row">
+          <div class="col-md-3">
+              <label for="firstname">First Name</label>
+          </div>
+          <div class="col-md-6">
+              <input type="text" id="firstname" name="FirstName" #FirstName="ngModel"
+              [(ngModel)]="userService.selectedUser.FirstName" class="form-control" required>
+              
+          </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+                <label >Last Name</label>
+            </div>
+            <div class="col-md-6">
+                <input type="text" id="lastname" name="LastName" #LastName="ngModel"
+                [(ngModel)]="userService.selectedUser.LastName" class="form-control">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+              <div class="col-md-3">
+                  <label for="firstname">Employee ID</label>
+              </div>
+              <div class="col-md-6">
+                  <input type="text" id="employeeID" name="Employee_Id" #Employee_Id="ngModel"
+                  [(ngModel)]="userService.selectedUser.Employee_Id" class="form-control">
+              </div>
+            </div> 
+            <br>
+        <div class="row" style="text-align: center;padding:5px;">
+            <!-- [disabled]="!userForm.isvalid" -->
+            <button  id="btnSubmit" type="submit" (click)="onSubmit" class="btn btn-primary">{{buttonName}}</button>
+            <button type="input" class="btn btn-primary" (click)="resetForm(userForm)"
+             style="margin-left:20px;">Reset</button>
+          </div> 
+</form>

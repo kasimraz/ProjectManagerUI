@@ -1,0 +1,48 @@
+
+<hr >
+<h2>Users List</h2>
+<div class="row border border-primary" style="padding:5px">
+    <div class="col-md-4">
+        <input class="form-control" placeholder="Search..." 
+        type="text" [(ngModel)]="SearchText" />
+        </div>
+        <div class="col-md-8 ">
+                <label >Sort:</label>               
+               
+                        <button class="btn btn-secondary spacer" >First Name</button>
+                      
+                                <button class="btn btn-secondary spacer" >Last Name</button>
+                               
+                                        <button class="btn btn-secondary spacer" >EmployeeID</button>   
+                                        </div>
+</div>
+<ul class="list-group">
+<li class="list-group-item list-group-item"
+ *ngFor="let user of userService.users | userFilter:SearchText">
+ <input type="hidden" name="User_ID" #User_ID="ngModel" 
+    [(ngModel)]="user.User_ID">
+<div class="row">
+    <div class="col-md-6">
+        {{user.FirstName}} 
+    </div>
+    <div class="col-md-6">
+           <button class="btn btn-secondary" (click)="ShowForEdit(user)" style="margin-top:5px;" >Edit</button>
+        </div>
+</div>
+<div class="row">
+        <div class="col-md-6">
+            {{user.LastName}}
+        </div>
+        <div class="col-md-6">
+               <button class="btn btn-secondary" (click)="DeleteUser(user)" style="margin-top:5px;"  >Delete</button>
+            </div>
+    </div>
+    <div class="row">
+            <div class="col-md-6">
+                {{user.Employee_Id}}
+            </div>            
+        </div>
+</li>
+</ul>
+
+
