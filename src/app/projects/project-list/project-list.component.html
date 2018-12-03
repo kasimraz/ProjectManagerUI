@@ -1,1 +1,61 @@
-<p>Project list Works</p>
+
+<div class="row border border-primary" style="padding:5px">
+    <div class="col-md-4">
+        <input class="form-control" placeholder="Search..." 
+        type="text" [(ngModel)]="SearchText" />
+        </div>
+        <div class="col-md-8 ">
+                <label >Sort Task By:</label>              
+               
+                        <button class="btn btn-secondary spacer" >Start Date</button>
+                      
+                                <button class="btn btn-secondary spacer" >End Date</button>
+                               
+                                        <button class="btn btn-secondary spacer" >Priority</button> 
+                                        <button class="btn btn-secondary spacer" >Completed</button>   
+                                        </div>
+</div>
+
+<ul class="list-group">
+<li class="list-group-item list-group-item"
+ *ngFor="let project of projectService.projectlist ">
+ <input type="hidden" name="Project_ID" #Task_ID="ngModel" 
+    [(ngModel)]="task.Task_ID">
+   <div class="row">
+     <div class="col-md-8">
+       <div class="tile">
+        <div class="row">
+          <div class="col-md-4">Project</div>
+          <div class="col-md-4">{{Project}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">No Of Tasks</div>
+            <div class="col-md-2"></div>
+
+            <div class="col-md-2">Completed</div>
+            <div class="col-md-2"></div>
+          </div>
+          <div class="row">
+              <div class="col-md-2">Start Date</div>
+              <div class="col-md-2"></div>
+  
+              <div class="col-md-2">End Date</div>
+              <div class="col-md-2"></div>
+            </div>          
+       </div>
+     </div>
+     <div class="col-md-1">
+        Priority
+        <div class="tile">
+       </div>
+     </div>
+     <div class="col-md-3">
+       <button class="btn">Update</button>
+       <button class="btn">Suspend</button>
+     </div>
+   </div>
+</li>
+</ul>
+
+
+

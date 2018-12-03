@@ -64,9 +64,17 @@
             <label for="StartDate">Start Date:</label>
       </div>
       <div class="col-md-3">
-            <input type="Date" name="StartDate" #StartDate="ngModel"  [(ngModel)]="taskService.selectedTask.Start_Date"
+            <input type="text" name="StartDate" #StartDate="ngModel"
+             [ngModel]="CurrentDate| date:'dd-MM-yyyy'"
              
               class="form-control">
+              
+              <!-- <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div> -->
       </div>
       <div class="col-md-2">
             <label for="EndDate">End Date:</label>
@@ -84,4 +92,5 @@
      style="margin-left:20px;">Reset</button>
   </div>
 </div>
+
 </form>

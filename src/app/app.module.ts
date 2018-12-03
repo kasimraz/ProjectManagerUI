@@ -15,6 +15,7 @@ import { UserFilterPipe } from 'src/app/users/user-filter.pipe';
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectComponent } from './projects/project/project.component';
 import { ProjectListComponent } from './projects/project-list/project-list.component';
+import { SearchUserComponent } from './search-user/search-user.component';
 
 
 
@@ -30,7 +31,8 @@ import { ProjectListComponent } from './projects/project-list/project-list.compo
     UserFilterPipe,
     ProjectsComponent,
     ProjectComponent,
-    ProjectListComponent
+    ProjectListComponent,
+    SearchUserComponent
   ],
   imports: [
     BrowserModule,

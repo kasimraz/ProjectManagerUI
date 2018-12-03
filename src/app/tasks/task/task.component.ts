@@ -11,20 +11,22 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
 })
 export class TaskComponent implements OnInit {
 CurrentDate:Date=new Date();
+
   constructor(private taskService :TasksService) { }
 
   ngOnInit() {
-
+    
+this.resetForm();
     this.taskService.selectedTask =new Task();    
-    this.taskService.selectedTask.Start_Date= new Date();    
+   // this.taskService.selectedTask.Start_Date= Date.now();    
     //.toISOString().substring(0, 10)
   }
-  resetForm(form:NgForm){
+  resetForm(form?:NgForm){
     this.taskService.selectedTask={
       Task1:'',
       Task_ID:null,
       End_Date:null,
-      Start_Date:null,
+      Start_Date:new Date(),
       IsParentTask:true,
       ParentTask:'',
       Parent_ID:null,

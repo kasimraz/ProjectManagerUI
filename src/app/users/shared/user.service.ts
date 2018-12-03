@@ -23,7 +23,7 @@ userlist:Observable<any>;
   }
   getUser() :Observable<any>
   {
-   return this.http.get('http://localhost:61035/api/Users')    
+   return this.http.get('http://localhost:61035/api/Users');    
   }
 
   getUsers() 
