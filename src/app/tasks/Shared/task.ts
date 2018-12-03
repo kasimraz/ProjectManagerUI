@@ -8,7 +8,6 @@ export class Task {
     Priority:number;
     STATUS:string;
     Project:string;
-    IsParentTask:boolean;
-    StartDateString:string;
+    IsParentTask:boolean;    
     ParentTask:string;
 }

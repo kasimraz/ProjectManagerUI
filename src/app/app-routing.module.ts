@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { TasksComponent } from 'src/app/tasks/tasks.component';
 import { UsersComponent } from 'src/app/users/users.component';
 import { TasksListComponent } from 'src/app/tasks/tasks-list/tasks-list.component';
+import { ProjectsComponent } from 'src/app/projects/projects.component';
 
 const routes: Routes = [
   {path:'tasks',component:TasksComponent},
   {path:'Users', component:UsersComponent},
-  {path:'Taskslist',component:TasksListComponent}
+  {path:'Taskslist',component:TasksListComponent},
+  {path:'Projects',component:ProjectsComponent},
   {path:'', redirectTo:'/Users',pathMatch:'full'}
 ];
 

@@ -9,7 +9,7 @@
           <label for="Project">Project:</label>
       </div>    
       <div class="col-md-3">
-          <input type="text" [(ngModel)]="taskService.selectedTask.Project"
+          <input type="text" name="ProjectName" #ProjectName="ngModel"  [(ngModel)]="taskService.selectedTask.Project"
            id="projectName"  class="form-control"/>        
       </div>
       <div class="col-md-2">
@@ -24,7 +24,7 @@
       <div>
       </div>
       <div class="col-md-6">
-          <input type="text" [(ngModel)]="taskService.selectedTask.Task"
+          <input type="text" name="TaskName" #TaskName="ngModel"   [(ngModel)]="taskService.selectedTask.Task"
            id="task"  class="form-control"/>        
       </div>
   </div>
@@ -33,7 +33,7 @@
       <div class="col-md-2">         
       </div>
       <div class="col-md-6">
-      <input type="checkbox" 
+      <input type="checkbox" name="ParentTask" 
        value="ParentTask"  > Parent Task <br>
     </div>
   </div>
@@ -43,7 +43,7 @@
           <label for="Priority">Priority</label>
       </div>
       <div class="col-md-6">
-            <input type="range" [(ngModel)]="taskService.selectedTask.Priority"
+            <input type="range" name="Priority" #Priority="ngModel"  [(ngModel)]="taskService.selectedTask.Priority"
              class="form-control-range" value="0" id="formControlRange">
       </div>
   </div>
@@ -52,7 +52,7 @@
           <label for="Project">Parent Task:</label>
       </div>    
       <div class="col-md-3">
-          <input type="text" [(ngModel)]="taskService.selectedTask.Priority"
+          <input type="text" name="ParentTask" #ParentTask="ngModel"  [(ngModel)]="taskService.selectedTask.Priority"
            id="PTaskName" class="form-control"/>        
       </div>
       <div class="col-md-2">
@@ -64,7 +64,7 @@
             <label for="StartDate">Start Date:</label>
       </div>
       <div class="col-md-3">
-            <input type="Date" [(ngModel)]="taskService.selectedTask.Start_Date"
+            <input type="Date" name="StartDate" #StartDate="ngModel"  [(ngModel)]="taskService.selectedTask.Start_Date"
              
               class="form-control">
       </div>
@@ -72,7 +72,7 @@
             <label for="EndDate">End Date:</label>
       </div>
       <div class="col-md-3">
-            <input type="Date"  [(ngModel)]="taskService.selectedTask.End_Date"
+            <input type="Date" name="EndDate" #EndDate="ngModel"   [(ngModel)]="taskService.selectedTask.End_Date"
             class="form-control">
       </div>
   </div>

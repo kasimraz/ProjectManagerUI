@@ -1,3 +1,67 @@
-<p>
-  project works!
-</p>
+
+<form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
+        <input type="hidden" name="Project_ID" #Project_ID="ngModel" 
+        [(ngModel)]="projectService.selectedproject.Project_ID">
+<div class="container">
+  <div class="row">
+      <div class="col-md-2">
+          <label for="Project">Project:</label>
+      </div>    
+      <div class="col-md-3">
+          <input type="text" #ProjectName="ngModel" [(ngModel)]="projectService.selectedproject.Project"
+           id="projectName" name="ProjectName"  class="form-control"/>        
+      </div>        
+  </div>
+  <br>
+  <div class="row">
+      <div class="col-md-2">
+          
+      </div>
+      <div>
+      </div>
+      <div class="col-md-10">
+        <div class="col-md-4">
+        <input type="checkbox">
+        <label >Set Start Date and End Date</label>        
+      </div>
+      <div class="col-md-6">
+        <input type="Date" name="StartDate" #StartDate="ngModel" [(ngModel)]="projectService.selectedproject.Start_Date"             
+        class="form-control spacer textWidth" style="display:inline-block" placeholder="Start Date" >
+       
+        <input type="Date" name="EndDate" #EndDate="ngModel"  [(ngModel)]="projectService.selectedProject.End_Date"             
+        class="form-control spacer textWidth" style="display:inline-block"  placeholder="End Date" >
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+      <div class="col-md-2">
+          <label for="Priority">Priority</label>
+      </div>
+      <div class="col-md-6">
+            <input type="range" #Priority="ngModel" name="Priority" [(ngModel)]="projectService.selectedproject.Priority"
+             class="form-control-range" value="0" id="formControlRange">
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-2">
+          <label for="Project">Manager</label>
+      </div>    
+      <div class="col-md-3">
+          <input type="text" name="Manager" #Manager="ngModel"  [(ngModel)]="projectService.selectedproject.User_Name"
+            class="form-control"/>        
+      </div>
+      <div class="col-md-2">
+       <button value="Search" class="btn btn-primary btn-round-sm btn-sm">Search</button>
+      </div>    
+  </div><br>
+  
+  <br>
+  <div class="row" style="text-align: center;padding:5px;">
+    <!-- [disabled]="!userForm.isvalid" -->
+    <button  id="btnSubmit" type="submit" (click)="onSubmit" class="btn btn-primary">Add Project</button>
+    <button type="input" class="btn btn-primary" (click)="resetForm(projectForm)"
+     style="margin-left:20px;">Reset</button>
+  </div>
+</div>
+</form>
