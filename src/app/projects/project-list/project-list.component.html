@@ -25,33 +25,33 @@
      <div class="col-md-8">
        <div class="tile">
         <div class="row">
-          <div class="col-md-4">Project</div>
-          <div class="col-md-4">{{project.ProjectName}}</div>
+          <div class="col-md-2">Project</div>
+          <div class="col-md-4 bold">{{project.ProjectName}}</div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top:10px;">
             <div class="col-md-6">No Of Tasks</div>
-            <div class="col-md-2"></div>
+            <div class="col-md-2 bold"></div>
 
             <div class="col-md-2">Completed</div>
             <div class="col-md-2"></div>
           </div>
-          <div class="row">
+          <div class="row" style="margin-top:10px;">
               <div class="col-md-2">Start Date</div>
-              <div class="col-md-2">{{project.StartDate}}</div>
+              <div class="col-md-2 bold" >{{project.StartDate | date:"MM/dd/yyyy"}}</div>
   
               <div class="col-md-2">End Date</div>
-              <div class="col-md-2">{{project.EndDate}}</div>
+              <div class="col-md-2 bold">{{project.EndDate| date:"MM/dd/yyyy"}}</div>
             </div>          
        </div>
      </div>
      <div class="col-md-1">
         Priority
-        <div class="tile">
+        <div class="tile"> {{project.Priority}}
        </div>
      </div>
      <div class="col-md-3">
-       <button class="btn">Update</button>
-       <button class="btn">Suspend</button>
+       <button class="btn">Update</button> <br/>
+       <button class="btn" style="margin-top:10px;">Suspend</button>
      </div>
    </div>
 </li>

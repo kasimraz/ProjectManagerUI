@@ -16,7 +16,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ProjectComponent } from './projects/project/project.component';
 import { ProjectListComponent } from './projects/project-list/project-list.component';
 import { SearchUserComponent } from './search-user/search-user.component';
-
+import{AngularDateTimePickerModule} from 'angular2-datetimepicker'
 
 
 @NgModule({
@@ -39,7 +39,8 @@ import { SearchUserComponent } from './search-user/search-user.component';
     AppRoutingModule,
     FormsModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularDateTimePickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -25,11 +25,20 @@
         <label >Set Start Date and End Date</label>        
       </div>
       <div class="col-md-6">
-        <input type="Date" id="startDateTxtBox" name="StartDate" #StartDate="ngModel" [(ngModel)]="projectService.selectedproject.StartDate"             
+        <input type="Date" id="startDateTxtBox" name="StartDate"  
+        [(ngModel)]="projectService.selectedproject.StartDate"             
         class="form-control spacer textWidth" style="display:inline-block" placeholder="Start Date" disabled/>
-        <input type="Date" id="endDateTxtBox" name="EndDate" #EndDate="ngModel" [(ngModel)]="projectService.selectedproject.EndDate"             
+        <input type="Date" id="endDateTxtBox" name="EndDate"  
+        [(ngModel)]="projectService.selectedproject.EndDate"             
         class="form-control spacer textWidth" style="display:inline-block" placeholder="Start Date" disabled/>
-       
+       <!-- <angular2-date-picker name="StartDatePicker" style="width:100px" 
+       [(ngModel)]="projectService.selectedproject.StartDate"
+        [settings]="{bigbanner:true,timepicker:true,format:'dd-MM-yyyy'}" >
+      </angular2-date-picker>
+      <angular2-date-picker name="EndDatePicker" style="width:100px" 
+      [(ngModel)]="projectService.selectedproject.EndDate"
+       [settings]="{bigbanner:true,timepicker:true,format:'dd-MM-yyyy'}" >
+     </angular2-date-picker> -->
         
       </div>
     </div>
@@ -41,7 +50,7 @@
       </div>
       <div class="col-md-6">
             <input type="range" #Priority="ngModel" name="Priority" [(ngModel)]="projectService.selectedproject.Priority"
-             class="form-control-range" value="0" id="formControlRange">
+             class="form-control-range" value="0" min="1" max="30" id="formControlRange">
       </div>
   </div>
   <div class="row">
@@ -49,11 +58,13 @@
           <label for="Project">Manager</label>
       </div>    
       <div class="col-md-3">
-          <input type="text" name="Manager" #Manager="ngModel"  [(ngModel)]="projectService.selectedproject.ManagerName"
-            class="form-control"/>        
+          <input type="text" name="Manager" #Manager="ngModel" 
+           [(ngModel)]="projectService.selectedproject.ManagerName"
+            class="form-control" disabled/>        
       </div>
       <div class="col-md-2">
-       <button value="Search" class="btn btn-primary btn-round-sm btn-sm" data-toggle="modal" data-target="#myModal">Search</button>
+       <button value="Search" type="button" class="btn btn-primary btn-round-sm btn-sm"
+       data-toggle="modal" data-target="#myModal">Search</button>
       </div>    
   </div>
   <!-- ----COde for Modal -->
@@ -70,7 +81,7 @@
               <table class="table" *ngFor="let user of projectService.users">
                   <td class="col-md-4">{{user.FirstName+' '+user.LastName}}</td>
                   <td class="col-md-4">
-                    <button class="btn" (click)="selectUserToManager(user)" >Select User</button>
+                    <button type="button" class="btn" (click)="selectUserToManager(user)" >Select User</button>
                   </td>
                   </table>
           </div>
@@ -86,7 +97,7 @@
   <div class="row" style="text-align: center;padding:5px;">
     <!-- [disabled]="!userForm.isvalid" -->
     <button  id="btnSubmit" type="submit" (click)="onSubmit" class="btn btn-primary">Add Project</button>
-    <button type="input" class="btn btn-primary" (click)="resetForm(projectForm)"
+    <button type="button" class="btn btn-primary" (click)="resetForm(projectForm)"
      style="margin-left:20px;">Reset</button>
   </div>
 </div>

@@ -7,6 +7,7 @@ import { User } from 'src/app/users/shared/user.model';
 import { UserService } from 'src/app/users/shared/user.service';
 import { map } from 'rxjs/internal/operators/map';
 import { UserSearch } from 'src/app/projects/shared/user-search.model';
+import { DatePicker } from 'angular2-datetimepicker';
 
 @Component({
   selector: 'app-project',
@@ -16,12 +17,22 @@ import { UserSearch } from 'src/app/projects/shared/user-search.model';
 export class ProjectComponent implements OnInit {
 
   constructor(private projectService:ProjectService
-     ) { }
+     ) {
+       //place this in your constructor
+  // DatePicker.prototype.ngOnInit = function() {
+  // this.settings = Object.assign(this.defaultSettings, this.settings);
+  // if (this.settings.defaultOpen) {
+  // this.popover = true;
+  // }
+  // this.date = new Date();
+  // }; 
+  
+     }
 
 
   ngOnInit() {
     this.resetForm();
-    console.log(this.projectService.getUsers());
+   this.projectService.getUsers();
     this.projectService.getProjects();
     
   }
@@ -40,9 +51,11 @@ this.projectService.selectedproject={
 };
 
   }
+
   selectUserToManager(user:UserSearch){
+    
     this.projectService.selectedproject.ManagerId=user.User_ID;
-    this.projectService.selectedproject.ManagerName=user.FirstName+' '+user.LastName;
+    this.projectService.selectedproject.ManagerName=user.FirstName+' '+user.LastName;    
     var closeButton =document.getElementById('closeButton');
     closeButton.click();
     //alert("User Selected successfully");
@@ -52,8 +65,12 @@ this.projectService.selectedproject={
    
     if(form.value.Project_ID==null)
     {
-      console.log("post method called");
-  // var body=data as (form.value.json)
+     
+     var startdatevalue= this.projectService.selectedproject.StartDate;
+     var enddatevalue= this.projectService.selectedproject.EndDate;
+     form.value.StartDate=startdatevalue;
+     form.value.EndDate=enddatevalue;
+      console.log("date value"+  form.value.ManagerName);  
     this.projectService.postProject(form.value).subscribe(data=>
     {
       this.resetForm(form),
@@ -63,6 +80,10 @@ this.projectService.selectedproject={
   }
   else{
     console.log("put method called");
+    var startdatevalue= this.projectService.selectedproject.StartDate;
+     var enddatevalue= this.projectService.selectedproject.EndDate;
+     form.value.StartDate=startdatevalue;
+     form.value.EndDate=enddatevalue;
     this.projectService.putProjects(form.value.Project_ID,form.value)
     .subscribe(data=>
     {

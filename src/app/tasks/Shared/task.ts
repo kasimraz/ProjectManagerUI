@@ -10,4 +10,6 @@ export class Task {
     Project:string;
     IsParentTask:boolean;    
     ParentTask:string;
+    UserName:string;
+    UserID:number
 }

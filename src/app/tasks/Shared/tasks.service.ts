@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Task } from './task';
 import {Observable} from "rxjs"
+import { SearchUser } from 'src/app/tasks/Shared/SearchUser';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import {Observable} from "rxjs"
 export class TasksService {
 selectedTask:Task;
 taskslist:Task[];
+users:SearchUser[];
   constructor(private http:HttpClient) { }
 
   postUser(task:Task){
@@ -20,6 +22,12 @@ taskslist:Task[];
   getUser() :Observable<any>
   {
    return this.http.get('http://localhost:61035/api/Users')    
+  }
+
+  getUsers() 
+  {
+   return this.http.get<SearchUser[]>('http://localhost:61035/api/Users')
+    
   }
 
   getTasks() 
