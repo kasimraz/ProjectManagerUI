@@ -7,7 +7,7 @@ export class Task {
     End_Date:Date;
     Priority:number;
     STATUS:string;
-    Project:string;
+    ProjectName:string;
     IsParentTask:boolean;    
     ParentTask:string;
     UserName:string;

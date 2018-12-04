@@ -38,6 +38,11 @@ this.userService.selectedUser={
   Task_ID:null
 };
   }
+
+  changeButtonText(eventdata:string)
+  {
+    this.buttonName=eventdata;
+  }
   onSubmit(form:NgForm){
    
     if(form.value.User_ID==null)
@@ -47,7 +52,9 @@ this.userService.selectedUser={
     this.userService.postUser(form.value).subscribe(data=>
     {
       this.resetForm(form),
-      this.userService.getUsers()                
+      this.userService.getUser().subscribe(userlist=>this.userService.users=userlist)
+      alert("User added successfully")  
+                
     })
   }
   else{
@@ -57,6 +64,8 @@ this.userService.selectedUser={
     {
       this.resetForm(form);
       this.userService.getUser().subscribe(userlist=>this.userService.users=userlist)
+      alert("User updated successfully")  
+      this.buttonName="Add";
     })
   }
   }

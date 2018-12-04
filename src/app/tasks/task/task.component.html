@@ -9,39 +9,42 @@
           <label for="Project">Project:</label>
       </div>    
       <div class="col-md-3">
-          <input type="text" name="ProjectName" #ProjectName="ngModel"  [(ngModel)]="taskService.selectedTask.Project"
-           id="projectName"  class="form-control"/>        
+          <input type="text" name="ProjectName" #ProjectName="ngModel" 
+           [(ngModel)]="taskService.selectedTask.ProjectName"
+           id="projectName"  class="form-control" disabled/>        
       </div>
       <div class="col-md-2">
-       <button value="Search" class="btn btn-primary btn-round-sm btn-sm">Search</button>
+       <button value="Search" type="button" class="btn btn-primary btn-round-sm btn-sm"
+       data-toggle="modal" data-target="#projectModal"
+       >Search</button>
       </div>    
-  </div>
-  <!-- ----COde for Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  </div> 
+  <!-- ----Code for ModalProject-->
+  <div class="modal fade" id="projectModal" role="dialog">
         <div class="modal-dialog">
         
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">UsersList</h4>
+              <h4 class="modal-title">Projects</h4>
             </div>
             <div class="modal-body">            
-                <table class="table" *ngFor="let user of projectService.users">
-                    <td class="col-md-4">{{user.FirstName+' '+user.LastName}}</td>
+                <table class="table" *ngFor="let project of taskService.projects">
+                    <td class="col-md-4">{{project.ProjectName}}</td>
                     <td class="col-md-4">
-                      <button type="button" class="btn" (click)="selectUserToManager(user)" >Select User</button>
+                      <button type="button" class="btn" (click)="selectProjectToTask(project)" >Select</button>
                     </td>
                     </table>
             </div>
             <div class="modal-footer">
-              <button type="button" id="closeButton" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" id="projectCloseButton" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
           
         </div>
       </div>
-  <!-- code for modalbox ends   -->
+  <!-- code for modalbox ends   --> 
   <br>
   <div class="row">
       <div class="col-md-2">
@@ -50,7 +53,7 @@
       <div>
       </div>
       <div class="col-md-6">
-          <input type="text" name="TaskName" #TaskName="ngModel"   [(ngModel)]="taskService.selectedTask.Task"
+          <input type="text" name="TaskName" #TaskName="ngModel"   [(ngModel)]="taskService.selectedTask.Task1"
            id="task"  class="form-control"/>        
       </div>
   </div>
@@ -59,7 +62,7 @@
       <div class="col-md-2">         
       </div>
       <div class="col-md-6">
-      <input type="checkbox" name="ParentTask" 
+      <input type="checkbox" name="ParentTask"  (change)="toggleEditable($event)"
        value="ParentTask"  > Parent Task <br>
     </div>
   </div>
@@ -69,8 +72,8 @@
           <label for="Priority">Priority</label>
       </div>
       <div class="col-md-6">
-            <input type="range" name="Priority" #Priority="ngModel"  [(ngModel)]="taskService.selectedTask.Priority"
-             class="form-control-range" value="0" id="formControlRange">
+            <input type="range" id="priorityRange" name="Priority" #Priority="ngModel"  [(ngModel)]="taskService.selectedTask.Priority"
+             class="form-control-range" value="0" min="1" max="30" >
       </div>
   </div>
   <div class="row">
@@ -78,8 +81,8 @@
           <label for="Project">Parent Task:</label>
       </div>    
       <div class="col-md-3">
-          <input type="text" name="ParentTask" #ParentTask="ngModel"  [(ngModel)]="taskService.selectedTask.Priority"
-           id="PTaskName" class="form-control"/>        
+          <input type="text" id="parentTaskTxtBOX" name="ParentTask" #ParentTask="ngModel"  [(ngModel)]="taskService.selectedTask.ParentTask"
+          class="form-control"/>        
       </div>
       <div class="col-md-2">
        <button type="button" value="Search" class="btn btn-primary btn-round-sm btn-sm">Search</button>
@@ -90,8 +93,8 @@
             <label for="StartDate">Start Date:</label>
       </div>
       <div class="col-md-3">
-            <input type="date" name="StartDate" #StartDate="ngModel"
-             [ngModel]="taskService.selectedTask.End_Date | date:'dd-MM-yyyy'"             
+            <input type="date" id="startDateTxtBox" name="StartDate" #StartDate="ngModel"
+             [ngModel]="taskService.selectedTask.Start_Date"             
               class="form-control">            
              
       </div>
@@ -99,7 +102,8 @@
             <label for="EndDate">End Date:</label>
       </div>
       <div class="col-md-3">
-            <input type="Date" name="EndDate" #EndDate="ngModel"   [(ngModel)]="taskService.selectedTask.End_Date"
+            <input type="Date" id="endDateTxtBox" name="EndDate" #EndDate="ngModel"
+               [(ngModel)]="taskService.selectedTask.End_Date"
             class="form-control">
       </div>
   </div>
@@ -109,7 +113,7 @@
           <label >User</label>
       </div>
       <div class="col-md-3">
-            <input type="text" name="userName" #userName="ngModel"  [(ngModel)]="taskService.selectedTask.Priority"
+            <input type="text" name="userName" #userName="ngModel"  [(ngModel)]="taskService.selectedTask.UserName"
              id="userName" class="form-control" disabled/>        
         </div>
       <div class="col-md-3">

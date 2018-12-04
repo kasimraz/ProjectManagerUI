@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter} from '@angular/core';
 import { UserService } from '../shared/user.service'
 import {Observable} from "rxjs"
 import { User } from '../shared/user.model';
@@ -13,15 +13,17 @@ export class UserListComponent implements OnInit {
   Userslist:User[];
   SearchText : string;
 
+  @Output() changeBtnText:EventEmitter<string> =new EventEmitter<string>();
+
   ShowForEdit(user: User)
 {
   this.userService.selectedUser=Object.assign({},user);
+  this.changeBtnText.emit('Update');
 }
 
   ngOnInit() {
 
-   this.userService.getUsers();
-   console.log("users are: " +this.userService.users); 
+   this.userService.getUsers();   
     // this.userService.getUser()
     // .subscribe(data=> this.Userslist=data);    
   }
@@ -29,7 +31,7 @@ export class UserListComponent implements OnInit {
   {
    this.userService.DeleteUser(user.User_ID)
    .subscribe(data=>
-    this.userService.getUser().subscribe(users=>this.Userslist=users));
+    this.userService.getUser().subscribe(users=>this.userService.users=users));
   }
 
 }

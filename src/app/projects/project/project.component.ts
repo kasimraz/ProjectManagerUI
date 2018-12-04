@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from 'src/app/projects/shared/project.service';
 import { DatePipe } from '@angular/common/src/pipes';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
-import { SearchUserService } from 'src/app/search-user/search-user.service';
 import { User } from 'src/app/users/shared/user.model';
 import { UserService } from 'src/app/users/shared/user.service';
 import { map } from 'rxjs/internal/operators/map';
@@ -15,7 +14,7 @@ import { DatePicker } from 'angular2-datetimepicker';
   styleUrls: ['./project.component.scss']
 })
 export class ProjectComponent implements OnInit {
-
+  buttonName :string="Add";
   constructor(private projectService:ProjectService
      ) {
        //place this in your constructor
@@ -29,7 +28,10 @@ export class ProjectComponent implements OnInit {
   
      }
 
-
+     changeButtonText(eventdata:string)
+     {
+       this.buttonName=eventdata;
+     }
   ngOnInit() {
     this.resetForm();
    this.projectService.getUsers();
@@ -62,24 +64,26 @@ this.projectService.selectedproject={
   }
 
   onSubmit(form:NgForm){
-   
-    if(form.value.Project_ID==null)
-    {
-     
-     var startdatevalue= this.projectService.selectedproject.StartDate;
+    var startdatevalue= this.projectService.selectedproject.StartDate;
      var enddatevalue= this.projectService.selectedproject.EndDate;
+     var managerID=this.projectService.selectedproject.ManagerId;
+     var managername=this.projectService.selectedproject.ManagerName;
      form.value.StartDate=startdatevalue;
      form.value.EndDate=enddatevalue;
-      console.log("date value"+  form.value.ManagerName);  
+     form.value.ManagerId=managerID;
+     form.value.ManagerName=managername;
+     
+         if(form.value.Project_ID==null)
+    {
+     
     this.projectService.postProject(form.value).subscribe(data=>
     {
       this.resetForm(form),
-      this.projectService.getProjects() 
+      this.projectService.getProject().subscribe(data=>this.projectService.projectlist=data)
       alert("Project added successfully")               
     })
   }
-  else{
-    console.log("put method called");
+  else{    
     var startdatevalue= this.projectService.selectedproject.StartDate;
      var enddatevalue= this.projectService.selectedproject.EndDate;
      form.value.StartDate=startdatevalue;
@@ -88,7 +92,8 @@ this.projectService.selectedproject={
     .subscribe(data=>
     {
       this.resetForm(form);
-      this.projectService.getProjects();
+      this.projectService.getProject().subscribe(data=>this.projectService.projectlist=data)
+      alert("Project Updated Successfully")
     })
   }
   }

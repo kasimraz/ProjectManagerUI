@@ -15,7 +15,6 @@ import { UserFilterPipe } from 'src/app/users/user-filter.pipe';
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectComponent } from './projects/project/project.component';
 import { ProjectListComponent } from './projects/project-list/project-list.component';
-import { SearchUserComponent } from './search-user/search-user.component';
 import{AngularDateTimePickerModule} from 'angular2-datetimepicker'
 
 
@@ -31,8 +30,7 @@ import{AngularDateTimePickerModule} from 'angular2-datetimepicker'
     UserFilterPipe,
     ProjectsComponent,
     ProjectComponent,
-    ProjectListComponent,
-    SearchUserComponent
+    ProjectListComponent        
   ],
   imports: [
     BrowserModule,
@@ -40,7 +38,8 @@ import{AngularDateTimePickerModule} from 'angular2-datetimepicker'
     FormsModule,
     HttpModule,
     HttpClientModule,
-    AngularDateTimePickerModule
+    AngularDateTimePickerModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

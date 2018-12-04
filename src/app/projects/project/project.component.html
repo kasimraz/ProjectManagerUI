@@ -31,14 +31,7 @@
         <input type="Date" id="endDateTxtBox" name="EndDate"  
         [(ngModel)]="projectService.selectedproject.EndDate"             
         class="form-control spacer textWidth" style="display:inline-block" placeholder="Start Date" disabled/>
-       <!-- <angular2-date-picker name="StartDatePicker" style="width:100px" 
-       [(ngModel)]="projectService.selectedproject.StartDate"
-        [settings]="{bigbanner:true,timepicker:true,format:'dd-MM-yyyy'}" >
-      </angular2-date-picker>
-      <angular2-date-picker name="EndDatePicker" style="width:100px" 
-      [(ngModel)]="projectService.selectedproject.EndDate"
-       [settings]="{bigbanner:true,timepicker:true,format:'dd-MM-yyyy'}" >
-     </angular2-date-picker> -->
+      
         
       </div>
     </div>
@@ -96,9 +89,13 @@
   <br>
   <div class="row" style="text-align: center;padding:5px;">
     <!-- [disabled]="!userForm.isvalid" -->
-    <button  id="btnSubmit" type="submit" (click)="onSubmit" class="btn btn-primary">Add Project</button>
+    <button  id="btnSubmit" type="submit" (click)="onSubmit" class="btn btn-primary">{{buttonName}}</button>
     <button type="button" class="btn btn-primary" (click)="resetForm(projectForm)"
      style="margin-left:20px;">Reset</button>
   </div>
 </div>
 </form>
+
+<div>
+    <app-project-list  (changeBtnText)=changeButtonText($event)></app-project-list>
+</div>
