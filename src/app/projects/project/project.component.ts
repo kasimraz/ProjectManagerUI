@@ -15,7 +15,7 @@ import { DatePicker } from 'angular2-datetimepicker';
 })
 export class ProjectComponent implements OnInit {
   buttonName :string="Add";
-  constructor(private projectService:ProjectService
+  constructor(public projectService:ProjectService
      ) {
        //place this in your constructor
   // DatePicker.prototype.ngOnInit = function() {
@@ -35,8 +35,7 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     this.resetForm();
    this.projectService.getUsers();
-    this.projectService.getProjects();
-    
+    this.projectService.getProjects();        
   }
   resetForm(form? :NgForm){
     if(form!=null)
@@ -49,7 +48,8 @@ this.projectService.selectedproject={
   EndDate:null,
   Priority:null,
   ManagerName:'',
-  STATUS:''
+  STATUS:'',
+  tasks:null
 };
 
   }

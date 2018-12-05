@@ -7,8 +7,8 @@ import { TasksService } from 'src/app/tasks/Shared/tasks.service';
   styleUrls: ['./tasks-list.component.scss']
 })
 export class TasksListComponent implements OnInit {
-
-  constructor(private taskService: TasksService) { }
+  SearchText:string;
+  constructor(public taskService: TasksService) { }
 
   ngOnInit() {
     this.taskService.getTasks();

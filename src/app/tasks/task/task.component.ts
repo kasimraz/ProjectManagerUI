@@ -6,7 +6,7 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { UserSearch } from 'src/app/projects/shared/user-search.model';
 import { SearchUser } from 'src/app/tasks/Shared/SearchUser';
 import { ProjectSearch } from 'src/app/tasks/Shared/project-search.model';
-
+import{ Router} from '@angular/router'
 @Component({
   selector: 'add-task',
   templateUrl: './task.component.html',
@@ -15,7 +15,9 @@ import { ProjectSearch } from 'src/app/tasks/Shared/project-search.model';
 export class TaskComponent implements OnInit {
 CurrentDate:Date=new Date();
 userslist:SearchUser[];
-  constructor(private taskService :TasksService) { }
+  constructor(public taskService :TasksService,
+ private _router:Router
+  ) { }
 
   ngOnInit() {
 
@@ -59,7 +61,8 @@ this.resetForm();
       Project_ID:null,
       STATUS:'',
       UserName:'',
-      UserID:null      
+      UserID:null ,
+      parentTask:null     
     }
   }
 
@@ -95,6 +98,7 @@ this.resetForm();
      var managername=this.taskService.selectedTask.UserName;
      var projectName=this.taskService.selectedTask.ProjectName;
      var projectId=this.taskService.selectedTask.Project_ID;
+     var taskname=this.taskService.selectedTask.Task1;
      form.value.Start_Date=startdatevalue;
      form.value.End_Date=enddatevalue;
      form.value.UserID=managerID;
@@ -103,15 +107,21 @@ this.resetForm();
      form.value.Project_ID=projectId;
      form.value.Parent_ID=1;
      form.value.STATUS='Active';
-     console.log(this.taskService.selectedTask.End_Date);
-     console.log(form.value.End_Date);
+     form.value.Task1=taskname; 
          if(form.value.Task_ID==null)
              {     
+// if(form.value.IsParentTask)
+// {
+//   console.log(form.value.IsParentTask);
+// this.taskService.PostParentTask(form.value);
+// }
     this.taskService.postTask(form.value).subscribe(data=>
     {
+      console.log(form.value.Start_Date);
       this.resetForm(form),
       this.taskService.getTasks() 
-      alert("Project added successfully")               
+      alert("Task added successfully") 
+      this._router.navigate(['/tasks-list'])
     })
   }
   else{        

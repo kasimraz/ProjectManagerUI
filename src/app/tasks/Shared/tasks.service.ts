@@ -5,6 +5,7 @@ import {Observable} from "rxjs"
 import {environment} from 'src/environments/environment'
 import { SearchUser } from 'src/app/tasks/Shared/SearchUser';
 import { ProjectSearch } from 'src/app/tasks/Shared/project-search.model';
+import { ParentTask } from 'src/app/tasks/Shared/ParentTask.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +16,21 @@ taskslist:Task[];
 users:SearchUser[];
 baseURL:string= environment.baseUrl;
 projects:ProjectSearch[];
+pTask: ParentTask;
+
   constructor(private http:HttpClient) { }
 
   postTask(task:Task){
          
  return this.http.post(this.baseURL+'/Tasks',task);
   }
-
+  PostParentTask(task:Task)
+  {
+  this.pTask = new ParentTask();
+  this.pTask.Parent_ID=task.Parent_ID;
+  this.pTask.Parent_Task=task.Task1;
+  return this.http.post(this.baseURL+'/ParentTasks',this.pTask);
+  }
   getUser() :Observable<any>
   {   
    return this.http.get(this.baseURL+'/Users')    

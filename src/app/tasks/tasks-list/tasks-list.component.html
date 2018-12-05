@@ -18,7 +18,7 @@
 
 <ul class="list-group">
 <li class="list-group-item list-group-item"
- *ngFor="let task of taskService.taskslist | userFilter:SearchText">
+ *ngFor="let task of taskService.taskslist">
  <input type="hidden" name="Task_ID" #Task_ID="ngModel" 
     [(ngModel)]="task.Task_ID">
     <table class="table" style="margin-top: 10px;">
@@ -36,7 +36,7 @@
         </td>
         <td style="padding:5px;">
           <div class="col-md-2 tile">
-              {{task.ParentTask}}
+              
           </div>
         </td>
         <td style="padding:5px;">

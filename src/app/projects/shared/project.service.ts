@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,9 +35,11 @@ export class ProjectService {
 
   getProject() :Observable<any>
   {    
-    return this.http.get(this.baseURL+'/Projects')
+    return this.http.get<Project[]>(this.baseURL+'/Projects')
     ; 
   }
+
+
   getProjects()
   {    
     return this.http.get<Project[]>(this.baseURL+'/Projects')

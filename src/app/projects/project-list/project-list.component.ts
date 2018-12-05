@@ -10,9 +10,13 @@ import { Project } from 'src/app/projects/shared/project.model';
 })
 export class ProjectListComponent implements OnInit {
 
-  constructor(private projectService:ProjectService) { }
-
+  constructor(public projectService:ProjectService) { }
+count:number;
+SearchText:string;
   ngOnInit() {
+    this.projectService.getProjects();
+   // this.count=this.projectService.projectlist.tasks.
+  
   }
   @Output() changeBtnText:EventEmitter<string> =new EventEmitter<string>();
   ShowForEdit(project: Project)

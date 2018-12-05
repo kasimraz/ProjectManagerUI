@@ -1,3 +1,4 @@
+import { Task } from 'src/app/tasks/Shared/task'
 export class Project {    
     Project_ID:number;    
     StartDate:Date;
@@ -7,4 +8,5 @@ export class Project {
     ProjectName:string;
     ManagerId:number;
     ManagerName:string;
+    tasks:Task[]
 }

@@ -1,3 +1,5 @@
+import { ParentTask } from "src/app/tasks/Shared/ParentTask.model";
+
 export class Task {
     Task1:string;
     Task_ID:number
@@ -11,5 +13,6 @@ export class Task {
     IsParentTask:boolean;    
     ParentTask:string;
     UserName:string;
-    UserID:number
+    UserID:number;
+    parentTask:ParentTask
 }

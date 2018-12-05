@@ -62,8 +62,8 @@
       <div class="col-md-2">         
       </div>
       <div class="col-md-6">
-      <input type="checkbox" name="ParentTask"  (change)="toggleEditable($event)"
-       value="ParentTask"  > Parent Task <br>
+      <input type="checkbox" name="ParentTask" #ParentTask="ngModel" (change)="toggleEditable($event)"
+       value="ParentTask" [(ngModel)]="taskService.selectedTask.IsParentTask"  > Parent Task <br>
     </div>
   </div>
   <br>
@@ -90,11 +90,11 @@
   </div><br>
   <div class="row">
       <div class="col-md-2">
-            <label for="StartDate">Start Date:</label>
+            <label for="SDate">Start Date:</label>
       </div>
       <div class="col-md-3">
-            <input type="date" id="startDateTxtBox" name="StartDate" #StartDate="ngModel"
-             [ngModel]="taskService.selectedTask.Start_Date"             
+            <input type="Date" id="startDateTxtBox" name="SDate" #SDate="ngModel"
+             [(ngModel)]="taskService.selectedTask.Start_Date"             
               class="form-control">            
              
       </div>
