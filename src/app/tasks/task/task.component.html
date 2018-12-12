@@ -4,14 +4,14 @@
         <input type="hidden" name="Task_ID" #User_ID="ngModel" 
         [(ngModel)]="taskService.selectedTask.Task_ID">
 <div class="container">
-  <div class="row">
+  <div class="form-group">
       <div class="col-md-2">
           <label for="Project">Project:</label>
       </div>    
       <div class="col-md-3">
           <input type="text" name="ProjectName" #ProjectName="ngModel" 
            [(ngModel)]="taskService.selectedTask.ProjectName"
-           id="projectName"  class="form-control" disabled/>        
+           id="projectName"  class="form-control" required disabled/>        
       </div>
       <div class="col-md-2">
        <button value="Search" type="button" class="btn btn-primary btn-round-sm btn-sm"
@@ -45,8 +45,9 @@
         </div>
       </div>
   <!-- code for modalbox ends   --> 
-  <br>
-  <div class="row">
+  <br/>
+  <br/>
+  <div class="form-group" [class.has-error]="TaskName.invalid && TaskName.touched">
       <div class="col-md-2">
           <label for="Project">Task:</label>
       </div>
@@ -54,11 +55,15 @@
       </div>
       <div class="col-md-6">
           <input type="text" name="TaskName" #TaskName="ngModel"   [(ngModel)]="taskService.selectedTask.Task1"
-           id="task"  class="form-control"/>        
+           id="task"  class="form-control" required/>        
       </div>
+      <div class="col-md-3">
+            <span class="help-block" *ngIf="TaskName.invalid  && TaskName.touched">Task Name is required</span>             
+          </div> 
   </div>
-  <br>
-  <div class="row">
+  <br/>
+  
+  <div class="form-group">
       <div class="col-md-2">         
       </div>
       <div class="col-md-6">
@@ -67,54 +72,61 @@
     </div>
   </div>
   <br>
-  <div class="row">
+  <div class="form-group" [class.has-error]="Priority.invalid && Priority.touched">
       <div class="col-md-2">
           <label for="Priority">Priority</label>
       </div>
       <div class="col-md-6">
             <input type="range" id="priorityRange" name="Priority" #Priority="ngModel"  [(ngModel)]="taskService.selectedTask.Priority"
-             class="form-control-range" value="0" min="1" max="30" >
+             class="form-control-range" required value="0" min="1" max="30" >
       </div>
+      <div class="col-md-3">
+            <span class="help-block" *ngIf="Priority.invalid  && Priority.touched">Task Name is required</span>             
+          </div>
   </div>
-  <div class="row">
+  <br/>
+  <div class="form-group">
       <div class="col-md-2">
           <label for="Project">Parent Task:</label>
       </div>    
       <div class="col-md-3">
           <input type="text" id="parentTaskTxtBOX" name="ParentTask" #ParentTask="ngModel"  [(ngModel)]="taskService.selectedTask.ParentTask"
-          class="form-control"/>        
+          class="form-control" required/>        
       </div>
       <div class="col-md-2">
        <button type="button" value="Search" class="btn btn-primary btn-round-sm btn-sm">Search</button>
       </div>    
-  </div><br>
-  <div class="row">
+  </div>
+  <br/>
+<br/>
+  <div class="form-group" >
       <div class="col-md-2">
             <label for="SDate">Start Date:</label>
       </div>
       <div class="col-md-3">
             <input type="Date" id="startDateTxtBox" name="SDate" #SDate="ngModel"
-             [(ngModel)]="taskService.selectedTask.Start_Date"             
-              class="form-control">            
-             
+             [(ngModel)]="taskService.selectedTask.Start_Date"              
+              class="form-control" required>                        
       </div>
+      
+      
       <div class="col-md-2">
             <label for="EndDate">End Date:</label>
       </div>
       <div class="col-md-3">
             <input type="Date" id="endDateTxtBox" name="EndDate" #EndDate="ngModel"
-               [(ngModel)]="taskService.selectedTask.End_Date"
+               [(ngModel)]="taskService.selectedTask.End_Date" required
             class="form-control">
       </div>
   </div>
-  <br/>
-  <div class="row" >
+  <br/><br/>
+  <div class="form-group" >
       <div class="col-md-2">
           <label >User</label>
       </div>
       <div class="col-md-3">
             <input type="text" name="userName" #userName="ngModel"  [(ngModel)]="taskService.selectedTask.UserName"
-             id="userName" class="form-control" disabled/>        
+             id="userName" class="form-control" required disabled/>        
         </div>
       <div class="col-md-3">
             <button type="button" id="btnUserSearch" value="Search"
@@ -152,7 +164,7 @@
   <br>
   <div class="row" style="text-align: center;padding:5px;">
     <!-- [disabled]="!userForm.isvalid" -->
-    <button  id="btnSubmit" type="submit" (click)="onSubmit" class="btn btn-primary">Add Task</button>
+    <button  id="btnSubmit" type="submit" [disabled]="taskForm.invalid" (click)="onSubmit" class="btn btn-primary">Add Task</button>
     <button type="button" class="btn btn-primary" (click)="resetForm(taskForm)"
      style="margin-left:20px;">Reset</button>
   </div>

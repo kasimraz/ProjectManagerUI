@@ -11,7 +11,7 @@ import { UserComponent } from './users/user/user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { TaskComponent } from './tasks/task/task.component';
 import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
-import { UserFilterPipe } from 'src/app/users/user-filter.pipe';
+import {UserFilterPipe} from './users/shared/user-filter.pipe'
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectComponent } from './projects/project/project.component';
 import { ProjectListComponent } from './projects/project-list/project-list.component';
