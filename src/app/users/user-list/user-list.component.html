@@ -18,7 +18,7 @@
 </div>
 <ul class="list-group">
 <li class="list-group-item list-group-item"
- *ngFor="let user of userService.users ">
+ *ngFor="let user of userService.users | userFilter:'name':SearchText;">
  <input type="hidden" name="User_ID" #User_ID="ngModel" 
     [(ngModel)]="user.User_ID">
 <div class="row">

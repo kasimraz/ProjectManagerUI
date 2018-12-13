@@ -15,7 +15,9 @@ import {UserFilterPipe} from './users/shared/user-filter.pipe'
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectComponent } from './projects/project/project.component';
 import { ProjectListComponent } from './projects/project-list/project-list.component';
-import{AngularDateTimePickerModule} from 'angular2-datetimepicker'
+import{AngularDateTimePickerModule} from 'angular2-datetimepicker';
+import { ProjectFilterPipe } from './projects/shared/project-filter.pipe';
+import { TaskFilterPipe } from './tasks/Shared/task-filter.pipe'
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import{AngularDateTimePickerModule} from 'angular2-datetimepicker'
     UserFilterPipe,
     ProjectsComponent,
     ProjectComponent,
-    ProjectListComponent        
+    ProjectListComponent,
+    ProjectFilterPipe,
+    TaskFilterPipe        
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,7 @@
 
 <ul class="list-group">
 <li class="list-group-item list-group-item"
- *ngFor="let project of projectService.projectlist">
+ *ngFor="let project of projectService.projectlist | projectFilter:'name':SearchText; let i=index">
  <input type="hidden" name="Project_ID" #Project_ID="ngModel" 
     [(ngModel)]="project.Project_ID">
    <div class="row">

@@ -16,7 +16,8 @@ export class UserComponent implements OnInit {
     
   }
   buttonName :string="Add";
-
+  userSubmitted = true;
+  TestFormData : NgForm;
   ChangeButtonText()
   {
    var text= document.getElementById("btnSubmit").innerText;
@@ -54,7 +55,7 @@ this.userService.selectedUser={
       this.resetForm(form),
       this.userService.getUser().subscribe(userlist=>this.userService.users=userlist)
       alert("User added successfully")  
-                
+          this.userSubmitted=true;      
     })
   }
   else{

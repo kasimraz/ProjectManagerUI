@@ -18,7 +18,7 @@
 
 <ul class="list-group">
 <li class="list-group-item list-group-item"
- *ngFor="let task of taskService.taskslist">
+ *ngFor="let task of taskService.taskslist | taskFilter:'name':SearchText; let i=index">
  <input type="hidden" name="Task_ID" #Task_ID="ngModel" 
     [(ngModel)]="task.Task_ID">
     <table class="table" style="margin-top: 10px;">
