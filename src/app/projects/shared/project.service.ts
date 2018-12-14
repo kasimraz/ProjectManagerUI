@@ -18,12 +18,12 @@ export class ProjectService {
 
   getUser() : Observable<any>
   {
-   return this.http.get(this.baseURL+'/Users');    
+   return this.http.get(this.baseURL+'/Users/GetUser');    
   }
 
   getUsers() 
   {
-   return this.http.get<UserSearch[]>(this.baseURL+'/Users')
+   return this.http.get<UserSearch[]>(this.baseURL+'/Users/GetUser')
    .subscribe(data=>this.users=data);   
   }
 

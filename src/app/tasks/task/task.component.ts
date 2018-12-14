@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { TasksService } from 'src/app/tasks/Shared/tasks.service';
 import { Task } from 'src/app/tasks/Shared/task';
 import {DatePipe} from '@angular/common'
-import { NgForm } from '@angular/forms/src/directives/ng_form';
+import { NgForm } from '@angular/forms';
 import { UserSearch } from 'src/app/projects/shared/user-search.model';
 import { SearchUser } from 'src/app/tasks/Shared/SearchUser';
 import { ProjectSearch } from 'src/app/tasks/Shared/project-search.model';
 import{ Router} from '@angular/router'
+import { ViewChild } from '@angular/core';
 @Component({
   selector: 'add-task',
   templateUrl: './task.component.html',
@@ -14,6 +15,7 @@ import{ Router} from '@angular/router'
 })
 export class TaskComponent implements OnInit {
 CurrentDate:Date=new Date();
+@ViewChild('taskForm') sampleForm: NgForm;
 userslist:SearchUser[];
   constructor(public taskService :TasksService,
  private _router:Router
@@ -120,8 +122,7 @@ this.resetForm();
       console.log(form.value.Start_Date);
       this.resetForm(form),
       this.taskService.getTasks() 
-      alert("Task added successfully") 
-      this._router.navigate(['/tasks-list'])
+      alert("Task added successfully")       
     })
   }
   else{        

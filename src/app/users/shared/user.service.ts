@@ -25,12 +25,12 @@ userlist:Observable<any>;
   }
   getUser() :Observable<any>
   {
-   return this.http.get(this.baseURL+'/Users');    
+   return this.http.get(this.baseURL+'/Users/GetUser');    
   }
 
   getUsers() 
   {
-   return this.http.get<User[]>(this.baseURL+'/Users')
+   return this.http.get<User[]>(this.baseURL+'/Users/GetUser')
    .subscribe(data=>this.users=data);   
   }
 
@@ -42,7 +42,7 @@ userlist:Observable<any>;
   DeleteUser(User_ID:number)
   {
     // console.log(User_ID);
-     console.log('http://localhost:61035/api/Users/'+User_ID);
-   return  this.http.delete(this.baseURL+'/Users/?id='+User_ID)    
+     //console.log('http://localhost:61035/api/Users/'+User_ID);
+   return  this.http.delete(this.baseURL+'/Users?id='+User_ID)    
   }
 }

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from 'src/app/projects/shared/project.service';
 import { DatePipe } from '@angular/common/src/pipes';
-import { NgForm } from '@angular/forms/src/directives/ng_form';
+import { NgForm } from '@angular/forms';
 import { User } from 'src/app/users/shared/user.model';
 import { UserService } from 'src/app/users/shared/user.service';
 import { map } from 'rxjs/internal/operators/map';
 import { UserSearch } from 'src/app/projects/shared/user-search.model';
 import { DatePicker } from 'angular2-datetimepicker';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-project',
@@ -15,6 +16,7 @@ import { DatePicker } from 'angular2-datetimepicker';
 })
 export class ProjectComponent implements OnInit {
   buttonName :string="Add";
+  @ViewChild('projectForm') sampleForm: NgForm;
   constructor(public projectService:ProjectService
      ) {
        //place this in your constructor

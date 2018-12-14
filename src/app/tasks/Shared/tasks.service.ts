@@ -33,7 +33,7 @@ pTask: ParentTask;
   }
   getUser() :Observable<any>
   {   
-   return this.http.get(this.baseURL+'/Users')    
+   return this.http.get(this.baseURL+'/Users/GetUser')    
   }
 
   getProjects()
@@ -44,7 +44,7 @@ pTask: ParentTask;
 
   getUsers() 
   {    
-   return this.http.get<SearchUser[]>(this.baseURL+'/Users')   
+   return this.http.get<SearchUser[]>(this.baseURL+'/Users/GetUser')   
   }
 
   getTasks() 

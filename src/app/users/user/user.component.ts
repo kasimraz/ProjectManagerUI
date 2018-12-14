@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms'
 import { UserService } from '../shared/user.service'
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -10,7 +11,7 @@ import { UserService } from '../shared/user.service'
 export class UserComponent implements OnInit {
 
   constructor(public userService:UserService) { }
-
+  @ViewChild('userForm') sampleForm: NgForm;
   ngOnInit() {
     this.resetForm();
     
@@ -45,7 +46,7 @@ this.userService.selectedUser={
     this.buttonName=eventdata;
   }
   onSubmit(form:NgForm){
-   
+   this.TestFormData=form;
     if(form.value.User_ID==null)
     {
       console.log("post method called");
