@@ -21,28 +21,34 @@ userlist:Observable<any>;
     console.log(user);
     user.User_ID=1;
    // var body= Jsonp.() 
- return this.http.post(this.baseURL+'/Users',user);
+ //return this.http.post(this.baseURL+'/Users',user);
+ return this.http.post(this.baseURL+'/Users/AddUser/',user);
   }
   getUser() :Observable<any>
   {
-   return this.http.get(this.baseURL+'/Users/GetUser');    
+   //return this.http.get(this.baseURL+'/Users/GetUser');    
+   return this.http.get(this.baseURL+'/Users/');    
   }
 
   getUsers() 
   {
-   return this.http.get<User[]>(this.baseURL+'/Users/GetUser')
+  //  return this.http.get<User[]>(this.baseURL+'/Users/GetUser')
+  //  .subscribe(data=>this.users=data);   
+  return this.http.get<User[]>(this.baseURL+'/Users/')
    .subscribe(data=>this.users=data);   
   }
 
   PutUser(user_ID,user:User)
   {
-  return this.http.put(this.baseURL+'/Users/'+user_ID,user);
+  //return this.http.put(this.baseURL+'/Users/'+user_ID,user);
+  return this.http.put(this.baseURL+'/Users/EditUser/'+user_ID,user);
   }
   
   DeleteUser(User_ID:number)
   {
     // console.log(User_ID);
      //console.log('http://localhost:61035/api/Users/'+User_ID);
-   return  this.http.delete(this.baseURL+'/Users?id='+User_ID)    
+  // return  this.http.delete(this.baseURL+'/Users?id='+User_ID)    
+  return  this.http.delete(this.baseURL+'/Users/Deleteuser/'+User_ID)    
   }
 }

@@ -22,7 +22,8 @@ pTask: ParentTask;
 
   postTask(task:Task){
          
- return this.http.post(this.baseURL+'/Tasks',task);
+ //return this.http.post(this.baseURL+'/Tasks',task);
+ return this.http.post(this.baseURL+'/Tasks/AddTask/',task);
   }
   PostParentTask(task:Task)
   {
@@ -33,33 +34,41 @@ pTask: ParentTask;
   }
   getUser() :Observable<any>
   {   
-   return this.http.get(this.baseURL+'/Users/GetUser')    
+   //return this.http.get(this.baseURL+'/Users/GetUser')    
+   return this.http.get(this.baseURL+'/Users/')    
   }
 
   getProjects()
   {
-    return this.http.get<ProjectSearch[]>(this.baseURL+'/Projects')
+    // return this.http.get<ProjectSearch[]>(this.baseURL+'/Projects')
+    // .subscribe(data=>this.projects=data); 
+    return this.http.get<ProjectSearch[]>(this.baseURL+'/Projects/')
     .subscribe(data=>this.projects=data); 
   }
 
   getUsers() 
   {    
-   return this.http.get<SearchUser[]>(this.baseURL+'/Users/GetUser')   
+  //  return this.http.get<SearchUser[]>(this.baseURL+'/Users/GetUser')   
+  return this.http.get<SearchUser[]>(this.baseURL+'/Users/')
   }
 
   getTasks() 
   {
-   return this.http.get<Task[]>(this.baseURL+'/Tasks')
-   .subscribe(data=>this.taskslist=data);   
+  //  return this.http.get<Task[]>(this.baseURL+'/Tasks')
+  //  .subscribe(data=>this.taskslist=data);  
+  return this.http.get<Task[]>(this.baseURL+'/Tasks/')
+  .subscribe(data=>this.taskslist=data);   
   }
 
   putTask(Task_ID,task:Task)
   {
-  return this.http.put(this.baseURL+'/Tasks/'+Task_ID,Task);
+  //return this.http.put(this.baseURL+'/Tasks/'+Task_ID,Task);
+  return this.http.put(this.baseURL+'/Tasks/EditTask/'+Task_ID,Task);
   }
   
   deleteTask(Task_ID:number)
   {   
-   return  this.http.delete(this.baseURL+'/Tasks/?id='+Task_ID)    
+   //return  this.http.delete(this.baseURL+'/Tasks/?id='+Task_ID)    
+   return  this.http.delete(this.baseURL+'/Tasks/DeleteTask/'+Task_ID)    
   }
 }
